@@ -34,8 +34,24 @@
 # Plan d'action
 ## Etudes
 - Boot d'un routeur
+  [Site explication démarrage Cisco](https://fr.scribd.com/doc/28590448/DEMARRAGE-ROUTEUR)
+  Séquence de démarrage d'un routeur Cisco :
+   * Autotest POST - ROM - Test Matériel
+   * Recherche de l'IOS - Boot en NVRAM
+    * Dans la FLASH et la charge dans la RAM, sinon
+    * Sur un serveur TFTP et la charge dans la RAM, sinon
+    * En ROMn démarre en mode RXBoot
+   * Recherche du fichier de configuration
+    * Si l'IOS est trouvé en FLASH ou sur un TFTP, recherche le fichier startup-config dans la NVRAM et le charge en RAM en tant que running-config
+    * Sinon, cherche sur un serveur TFTP un fichier de Startup-config et le charge en RAM en tant que running-config
+    * Sinon, démarre en mode de configuration. Une interface qui pose des questions à l'usager pour créer une config de base
+
 - Principe de routage
+  
+
 - Routage inter VLAN
+
+	Routage statique : (https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/5_x/nx-os/unicast/configuration/guide/l3_cli_nxos/l3_route.html)
 
 ## Réalisations
 - Reconfigurer le routeur
