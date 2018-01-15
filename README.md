@@ -39,3 +39,4 @@
 
 ## Réalisations
 - Reconfigurer le routeur
+- Utiliser du routage static
