@@ -47,7 +47,14 @@
     * Sinon, démarre en mode de configuration. Une interface qui pose des questions à l'usager pour créer une config de base
 
 - Principe de routage
-  
+  * Commutation de processus, tous les paquets sont analysé et comparé à la table de routage puis transféré. Très lent, pratiquement plus utilisé. (Comparaison : Effectue un calcul à la main, même si le calcul s'est déjà posé)
+  * Commutation rapide : Stocke les informations des paquets précédent et si un paquet ayant la même adresse de destination arrive, le traite beaucoup plus rapidement. (Comparaison : Effectue un calcul à la main et se souvient de la solution au cas où le calcul se représenterai)
+  * CEF (Cisco Express Forwarding) : Mode de transfert le plus rapide et le plus utilisé, générant une table FIB permettant le transfert très rapide des paquets. (Comparaison : Effectue à l'avance tous les calculs possibles sur le réseau et se souvient de toutes les solutions)
+
+  Le routage permet de définir des routes, cad permettre à un routeur de savoir sur quel port envoyer une information destinée à un sous-réseau ou un poste particulier
+  Deux types de routes :
+   * Routes Distantes :
+   * Routes Directes : 
 
 - Routage inter VLAN
 
