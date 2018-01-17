@@ -74,14 +74,17 @@ il existe l'équivalent pour IPv6
 
 Avantages :
 
-Économie de bande passante : Étant donné qu'aucune information ne transitent entre les routeurs pour qu'ils se tiennent à jour, la bande passante n'est pas encombrée avec des messages d'information et de routage.
-Sécurité : Contrairement aux protocoles de routage dynamique que nous allons voir plus bas, le routage statique ne diffuse pas d'information sur le réseau puisque les informations de routage sont directement saisies de manière définitive dans la configuration par l'administrateur.
-Connaissance du chemin à l'avance : L'administrateur ayant configuré l'ensemble de la topologie saura exactement par où passent les paquets pour aller d'un réseau à un autre, cela peut donc faciliter la compréhension d'un incident sur le réseau lors des transmissions de paquets.
+* Économie de bande passante : Étant donné qu'aucune information ne transitent entre les routeurs pour qu'ils se tiennent à jour, la bande passante n'est pas encombrée avec des messages d'information et de routage.
+
+* Sécurité : Contrairement aux protocoles de routage dynamique que nous allons voir plus bas, le routage statique ne diffuse pas d'information sur le réseau puisque les informations de routage sont directement saisies de manière définitive dans la configuration par l'administrateur.
+
+* Connaissance du chemin à l'avance : L'administrateur ayant configuré l'ensemble de la topologie saura exactement par où passent les paquets pour aller d'un réseau à un autre, cela peut donc faciliter la compréhension d'un incident sur le réseau lors des transmissions de paquets.
 
 Inconvénients :
 
-La configuration de réseaux de taille importante peut devenir assez longue et complexe, il faut en effet connaitre l'intégralité de la topologie pour saisir les informations de manière exhaustive et correcte pour que les réseaux communiquent entre eux. Cela peut devenir une source d'erreur et de complexité supplémentaire quand la taille du réseau grandit.
-A chaque fois que le réseau évolue, il faut que chaque routeur soit au courant de l'évolution par une mise à jour manuelle de la par de l'administrateur qui doit modifier les routes selon l'évolution.
+* La configuration de réseaux de taille importante peut devenir assez longue et complexe, il faut en effet connaitre l'intégralité de la topologie pour saisir les informations de manière exhaustive et correcte pour que les réseaux communiquent entre eux. Cela peut devenir une source d'erreur et de complexité supplémentaire quand la taille du réseau grandit.
+
+* A chaque fois que le réseau évolue, il faut que chaque routeur soit au courant de l'évolution par une mise à jour manuelle de la par de l'administrateur qui doit modifier les routes selon l'évolution.
 
 
 conclusion : le routage statique est intéressant uniquement sur les petits réseaux avec peu de routeurs et d'évolutions 
@@ -92,15 +95,19 @@ Le routage dynamique permet de se mettre à jour automatiquement. Un protocole d
 
 avantages
 
-Une maintenance réduite par l'automatisation des échanges et des décisions de routage
-Une modularité et une flexibilité accrue, il est plus facile de faire évoluer le réseau avec un réseau qui se met à jour automatiquement.
-Sa performance et sa mise en place ne dépendent pas de la taille du réseau
+* Une maintenance réduite par l'automatisation des échanges et des décisions de routage
+
+* Une modularité et une flexibilité accrue, il est plus facile de faire évoluer le réseau avec un réseau qui se met à jour automatiquement.
+
+* Sa performance et sa mise en place ne dépendent pas de la taille du réseau
 
 inconvénients :
 
-l peut être plus compliqué à mettre en place lors de son initialisation
-Il consomme de la bande passante de par les messages que les routeurs s'envoient périodiquement sur le réseau
-La diffusion automatique de message sur le réseau peut constituer un problème de sécurité car un attaquant peut obtenir des informations sur la topologie du réseau simplement en écoutant et en lisant ces messages d'information du protocole de routage et même en créer afin de se faire passer pour un membre du réseau.
+* il peut être plus compliqué à mettre en place lors de son initialisation
+
+* Il consomme de la bande passante de par les messages que les routeurs s'envoient périodiquement sur le réseau
+
+* La diffusion automatique de message sur le réseau peut constituer un problème de sécurité car un attaquant peut obtenir des informations sur la topologie du réseau simplement en écoutant et en lisant ces messages d'information du protocole de routage et même en créer afin de se faire passer pour un membre du réseau.
 Le traitement des messages réseau et le calcul des meilleures routes à emprunter représentent une consommation de CPU et de RAM supplémentaire qui peut encombrer certains éléments du réseau peu robuste.
 
 ### Routage inter VLAN
