@@ -191,6 +191,7 @@ Configuration : https://www.networklab.fr/routage-inter-vlan-et-switch-l3/
 - Si il trouve le fichier de config, il le charge
 	- Sinon, il entre dans le setup conf.mod
 	
+	test
 
 
 
