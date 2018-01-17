@@ -1,12 +1,12 @@
 *UE3 Prosit 3 - Principe de routage*
 
 # Mots Clés
-- ROMMON
-- Boot
+- ROMMON = IOS "restreint"
+- Boot = Séquence de démarrage d'un équipement
 - Inter VLAN
-- Routeur
+- Routeur = équipement de niveau 3 permettant l'accès à internet et la communication inter réseau
 - Routage
-- Bootstrap
+- Bootstrap = Va chercher l'IOS et la startup-config
 
 # Besoins
 **Quoi** : Comprendre le problème du routeur.
@@ -29,7 +29,7 @@
 - Un routeur inter VLAN permet faire communiquer plusieurs VLAN entre eux.
 - L'image IOS n'est pas présente dans le routeur.
 - Affichage d'une image IOS présent dans la ROM.
-- image peut-être récupérée sur le réseau ou sur un périphérique bootable.
+- Image peut-être récupérée sur le réseau ou sur un périphérique bootable.
 
 # Plan d'action
 ## Etudes
@@ -40,7 +40,7 @@
    * Recherche de l'IOS - Boot en NVRAM
     * Dans la FLASH et la charge dans la RAM, sinon
     * Sur un serveur TFTP et la charge dans la RAM, sinon
-    * En ROMn démarre en mode RXBoot
+    * En ROM démarre en mode RXBoot
    * Recherche du fichier de configuration
     * Si l'IOS est trouvé en FLASH ou sur un TFTP, recherche le fichier startup-config dans la NVRAM et le charge en RAM en tant que running-config
     * Sinon, cherche sur un serveur TFTP un fichier de Startup-config et le charge en RAM en tant que running-config
@@ -53,13 +53,32 @@
 
   Le routage permet de définir des routes, cad permettre à un routeur de savoir sur quel port envoyer une information destinée à un sous-réseau ou un poste particulier
   Deux types de routes :
-   * Routes Distantes :
-   * Routes Directes : 
+   * Routes Distantes
+   * Routes Directes
+
+   Deux types de routage :
+   * Routage dynamique :
+    * Complexité de configuration indépendante de celle du réseau 
+    * S'adapte automatiquement aux changements de topologie
+    * Evolutivité idéale pour les topologies simples et complexes
+    * Moins sécurisé qu'une route statique
+    * Utilise le CPU, la mémoire, la bande passante
+    * La route dépend de la topologie en cours
+
+   * Routage statique :
+    * Complexité de configuration augmente avec celle du réseau
+    * L'adaptation nécessite l'intervention d'un admin
+    * Evolutivité idéale pour les topologies simples
+    * Plus sécurisé qu'une route dynamique
+    * Aucune ressource supplémentaire n'est requise
+    * La route menant à la destination est toujours la même
 
 - Routage inter VLAN
 
-	Routage statique : (https://www.cisco.com/c/en/us/td/docs/switches/datacenter/sw/5_x/nx-os/unicast/configuration/guide/l3_cli_nxos/l3_route.html)
+ * Routeur On Stick : Qd deux VLAN différents, on se sert d'un routeur et d'une sous-interface (ex : fastEthernet 0/0.10 (dot1Q)) pour les faire communiquer entre eux.  
+   CMD : inter giga 0/1.20 --> encapsulation dot1Q *vlan* --> switchport mode trunk --> switchport trunk allowed *vlan,vlan,vlan*
 
 ## Réalisations
 - Reconfigurer le routeur
+
 - Utiliser du routage static
