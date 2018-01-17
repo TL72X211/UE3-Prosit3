@@ -85,7 +85,7 @@ Des calculs de routes sont fait en fonction de la vitesse des lies les liants, d
 
 ## 2- Le routage Inter-VLAN :
 
-https://www.it-connect.fr/wp-content-itc/uploads/2013/11/RoutageInterVLAN01-550x271.png
+![](https://www.it-connect.fr/wp-content-itc/uploads/2013/11/RoutageInterVLAN01-550x271.png)
 
 **Mise en place**
 
@@ -165,11 +165,11 @@ La norme 802.1q indique que une trame est étiquetée pour contenir un numéro d
 **Inconvénients** :
 Celà crée un goulot d'étranglement, tout le trafic inter-VLAN allant d'un port à un autre SWITCH devra remonter par ce lien :
 
-https://www.networklab.fr/wp-content/uploads/2014/01/83.jpg
+![](https://www.networklab.fr/wp-content/uploads/2014/01/83.jpg)
 
 **nb** : Il également une autre configuration (moins conseillée si trop de VLAN pour éviter ce goulot, cette configuration peut-être réalisée à l'aide d'un switch L3.
 
-https://www.networklab.fr/wp-content/uploads/2014/01/102.jpg
+![](https://www.networklab.fr/wp-content/uploads/2014/01/102.jpg)
 
 Il faut créer des SVI sur chaque SWITCH, activer la fonction de rouage sur les SWITCH, configurer un Switch comme un routeur en utilisant EIGRP, un protocole de routage CISCO...
 
@@ -190,9 +190,3 @@ Configuration : https://www.networklab.fr/routage-inter-vlan-et-switch-l3/
 	- Si il est à 0, il charge le fichier startup.conf dans la NVRAM
 - Si il trouve le fichier de config, il le charge
 	- Sinon, il entre dans le setup conf.mod
-	
-	test
-
-
-
-
