@@ -85,4 +85,113 @@ Des calculs de routes sont fait en fonction de la vitesse des lies les liants, d
 
 ## 2- Le routage Inter-VLAN :
 
+https://www.it-connect.fr/wp-content-itc/uploads/2013/11/RoutageInterVLAN01-550x271.png
+
+**Mise en place**
+
+**1** - Créer deux VLAN et les nommer mais aussi un VLAN natif (99)
+
+**2** - On configure les interface des switchs entre eux :
+
+*Switch(config)#interface fa0/1*
+
+*Switch(config-if)#switchport mode trunk *
+
+*Switch(config-if)#switchport trunk allowed vlan 20,30,99*
+
+*Switch(config-if)# switchport trunk native vlan 99*
+
+*Switch(config-if)#no shutdown*
+
+**3** - On atribue aux interfaces du switch qui sont reliés aux postes le bon VLAN :
+
+*Switch(config)#interface fa0/10*
+
+*Switch(config-if)#switchport access vlan 20*
+
+*Switch(config-if)#no shutdown*
+
+**4** - Tester la connectivité
+
+**Si on veut faire communiquer deux LAN isolés par des VLAN, il est nécessaire de faire intervenir un routeur**
+
+Celà s'appelle : Router-on-stick.
+
+## 3- Router-on-stick :
+
+Pour  communiquer d'un VLAN à un autre, il est obligatoire de passer par un routeur.
+
+**1** - Active l'interface du routeur Fa0/0
+
+**2** - Créer l'interface Fa0/0.1 et Fa0/0.2
+
+Nous admettons que  Fa0/0.1 sera la passerelle vers VLAN20 et 0.2 sur VLAN30 :
+
+*Router(config)#interface fa0/0.1*
+
+*Router(config-subif)#encapsulation dot1Q 20*
+
+*Router(config-subif)#ip address 192.168.20.254 255.255.255.0*
+
+*Router(config-subif)#no shutdown*
+et
+
+*Router(config)#interface fa0/0.2*
+
+*Router(config-subif)#encapsulation dot1Q 30*
+
+*Router(config-subif)#ip address 192.168.30.254 255.255.255.0* 
+
+*Router(config-subif)#no shutdown*
+
+**expliquons la dot1q**
+
+La norme 802.1q indique que une trame est étiquetée pour contenir un numéro de VLAN auquel elle est attribuée. La commande permet donc d'encapsuler une trame pour transiter sur le numéro du VLAN qu'on lui indique directement sur le routeur.
+
+**3** - Passer le switch connecté au routeur :
+
+*Switch(config)#interface fa0/24*
+
+*Switch(config-if)#switchport mode trunk*
+
+*Switch(config-if)#switchport trunk allowed vlan 20,30,99*
+
+*Switch(config-if)# switchport trunk native vlan 99*
+
+*Switch(config-if)#no shutdown*
+
+**4**-  On met la Gateway sur les postes, qui correspond à l'interface que l'on a crée précédemment.
+
+**Inconvénients** :
+Celà crée un goulot d'étranglement, tout le trafic inter-VLAN allant d'un port à un autre SWITCH devra remonter par ce lien :
+
+https://www.networklab.fr/wp-content/uploads/2014/01/83.jpg
+
+**nb** : Il également une autre configuration (moins conseillée si trop de VLAN pour éviter ce goulot, cette configuration peut-être réalisée à l'aide d'un switch L3.
+
+https://www.networklab.fr/wp-content/uploads/2014/01/102.jpg
+
+Il faut créer des SVI sur chaque SWITCH, activer la fonction de rouage sur les SWITCH, configurer un Switch comme un routeur en utilisant EIGRP, un protocole de routage CISCO...
+
+Configuration : https://www.networklab.fr/routage-inter-vlan-et-switch-l3/
+
+## 4- Boot d'un routeur :
+
+- POST (power on selft test), il teste le matériel
+- CONFREG : Lire la valeur du registre
+	- Si  0x???0 -> Démarer en mode ROM
+	- Si 0x???1 -> Démarrer en mode ROMMON
+	- 0x???2 -> 0x???F -> Lire la flash
+- Chercher l'IOS
+	- Trouve => Charge
+	- Trouve pas, va check si disponible sur un FTP
+	- Trouve pas ou Invalide => mode ROMMON
+- Vérifier le 7eme bit du registre, si il est ) 1, il passe le fichier de conf qui se trouve dans la NVRAM
+	- Si il est à 0, il charge le fichier startup.conf dans la NVRAM
+- Si il trouve le fichier de config, il le charge
+	- Sinon, il entre dans le setup conf.mod
+	
+
+
+
 
