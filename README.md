@@ -33,18 +33,18 @@
 
 # Plan d'action
 ## Etudes
-- Boot d'un routeur
-  [Site explication démarrage Cisco](https://fr.scribd.com/doc/28590448/DEMARRAGE-ROUTEUR)
+- Boot d'un routeur  
+  [Site explication démarrage Cisco](https://fr.scribd.com/doc/28590448/DEMARRAGE-ROUTEUR)  
   Séquence de démarrage d'un routeur Cisco :
    * Autotest POST - ROM - Test Matériel
    * Recherche de l'IOS - Boot en NVRAM
-    * Dans la FLASH et la charge dans la RAM, sinon
-    * Sur un serveur TFTP et la charge dans la RAM, sinon
-    * En ROM démarre en mode RXBoot
+      * Dans la FLASH et la charge dans la RAM, sinon
+      * Sur un serveur TFTP et la charge dans la RAM, sinon
+      * En ROM démarre en mode RXBoot
    * Recherche du fichier de configuration
-    * Si l'IOS est trouvé en FLASH ou sur un TFTP, recherche le fichier startup-config dans la NVRAM et le charge en RAM en tant que running-config
-    * Sinon, cherche sur un serveur TFTP un fichier de Startup-config et le charge en RAM en tant que running-config
-    * Sinon, démarre en mode de configuration. Une interface qui pose des questions à l'usager pour créer une config de base
+      * Si l'IOS est trouvé en FLASH ou sur un TFTP, recherche le fichier startup-config dans la NVRAM et le charge en RAM en tant que running-config
+      * Sinon, cherche sur un serveur TFTP un fichier de Startup-config et le charge en RAM en tant que running-config
+      * Sinon, démarre en mode de configuration. Une interface qui pose des questions à l'usager pour créer une config de base
 
 - Principe de routage
   * Commutation de processus, tous les paquets sont analysé et comparé à la table de routage puis transféré. Très lent, pratiquement plus utilisé. (Comparaison : Effectue un calcul à la main, même si le calcul s'est déjà posé)
@@ -58,20 +58,20 @@
 
    Deux types de routage :
    * Routage dynamique :
-    * Complexité de configuration indépendante de celle du réseau 
-    * S'adapte automatiquement aux changements de topologie
-    * Evolutivité idéale pour les topologies simples et complexes
-    * Moins sécurisé qu'une route statique
-    * Utilise le CPU, la mémoire, la bande passante
-    * La route dépend de la topologie en cours
+      * Complexité de configuration indépendante de celle du réseau 
+      * S'adapte automatiquement aux changements de topologie
+      * Evolutivité idéale pour les topologies simples et complexes
+      * Moins sécurisé qu'une route statique
+      * Utilise le CPU, la mémoire, la bande passante
+      * La route dépend de la topologie en cours
 
    * Routage statique :
-    * Complexité de configuration augmente avec celle du réseau
-    * L'adaptation nécessite l'intervention d'un admin
-    * Evolutivité idéale pour les topologies simples
-    * Plus sécurisé qu'une route dynamique
-    * Aucune ressource supplémentaire n'est requise
-    * La route menant à la destination est toujours la même
+      * Complexité de configuration augmente avec celle du réseau
+      * L'adaptation nécessite l'intervention d'un admin
+      * Evolutivité idéale pour les topologies simples
+      * Plus sécurisé qu'une route dynamique
+      * Aucune ressource supplémentaire n'est requise
+      * La route menant à la destination est toujours la même
 
 - Routage inter VLAN
 
