@@ -1,4 +1,4 @@
-*UE3 Prosit 3 - Principe de routage*
+﻿*UE3 Prosit 3 - Principe de routage*
 
 # Mots Clés
 - ROMMON
@@ -32,11 +32,42 @@
 - image peut-être récupérée sur le réseau ou sur un périphérique bootable.
 
 # Plan d'action
-## Etudes
-- Boot d'un routeur
-- Principe de routage
-- Routage inter VLAN
 
-## Réalisations
-- Reconfigurer le routeur
-- Utiliser du routage static
+Etudes
+
+## Boot d'un routeur
+
+![boot_img](/ress/boot.png)
+
+## Principe de routage statique :
+
+Routage statique :
+
+Commande pour configurer une route statique : « ip route AddRéseau AddSousRéseau ViaAddRouteur Interface TTL »
+Commande pour supprimer une route statique : « no ip route AddRéseau AddSousRéseau ViaAddRouteur»
+Afficher table de routage : « show ip route »
+
+Algorithme de configurations de route statique : 
+- Step 1 : configuration de l’interface
+- Step 2 : création des routes statiques (ip route)
+
+![conf](/ress/conf1.png)
+
+Les avantages du routage statique sont :
+- L’économie de la bande passante 
+- La sécurité
+- La connaissance du chemin à l’avance
+
+Les désavantages du routage statique sont :
+- La complexité de la configuration 
+- La maintenant pour chaque modification de la topologie du réseau
+
+
+## Routage inter VLAN
+
+![routage](/ress/routage.png)
+
+Réalisations:
+
+## Reconfigurer le routeur
+## Utiliser du routage static
